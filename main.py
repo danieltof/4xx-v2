@@ -4,17 +4,6 @@ from rapidfuzz import fuzz
 from urllib.parse import urlparse
 from io import BytesIO
 
-# Inject custom CSS to change sidebar background color
-st.markdown(
-    """
-    <style>
-    .css-1d391kg {
-        background-color: #ADD8E6 !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
 # Function to extract the path from the URL (everything after the domain)
 def extract_path(url):
