@@ -54,7 +54,7 @@ def match_urls(old_data, new_data):
     return pd.DataFrame(matched_urls)
 
 # Sidebar for additional information
-st.sidebar.image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPmZbb9ssbU5BqaZ4kbx_fBUt0LHfEJS7aYw&s", width=200, use_column_width=True)  # Add logo image
+st.sidebar.image("https://coalitiontechnologies.com/headless/assets/images/logo.svg, use_column_width=True)  # Add logo image
 
 # Streamlit UI setup
 st.title("4xx Redirects V2")
