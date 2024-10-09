@@ -8,7 +8,7 @@ st.markdown(
     """
     <style>
     [data-testid="stSidebar"] > div:first-child {
-        background-color: #ADD8E6;
+        background-color: #006ba1;
     }
     </style>
     """,
