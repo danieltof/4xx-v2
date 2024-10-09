@@ -4,6 +4,7 @@ from rapidfuzz import fuzz
 from urllib.parse import urlparse
 from io import BytesIO
 
+
 st.markdown(
     """
     <style>
@@ -103,6 +104,9 @@ The script compares the URL paths from Old.xlsx with the paths from New.xlsx, an
 
 """)
 
+# Set an initial flag for completion
+execution_complete = False
+
 # Upload files
 old_file = st.file_uploader("Upload Old.xlsx", type=["xlsx"])
 new_file = st.file_uploader("Upload New.xlsx", type=["xlsx"])
@@ -136,5 +140,9 @@ if old_file and new_file:
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     )
 
-# Display a message indicating the execution is complete
-st.success("Execution Completed")
+    # Set the flag to True once everything is done
+    execution_complete = True
+
+# Only show the success message if the execution is complete
+if execution_complete:
+    st.success("Execution Completed")
