@@ -54,7 +54,7 @@ def match_urls(old_data, new_data):
     return pd.DataFrame(matched_urls)
 
 # Streamlit UI setup
-st.title("URL Matching Web App")
+st.title("Automatic 4xx Redirects (V2-BigC-URL path)")
 
 # Sidebar for additional information
 st.sidebar.title("Automatic 4xx Redirects (V2-BigC-URL path)")
