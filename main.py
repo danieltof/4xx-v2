@@ -135,3 +135,6 @@ if old_file and new_file:
         file_name="matched_urls.xlsx",
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     )
+
+# Display a message indicating the execution is complete
+st.success("Execution Completed")
