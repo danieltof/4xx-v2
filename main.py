@@ -54,10 +54,10 @@ def match_urls(old_data, new_data):
     return pd.DataFrame(matched_urls)
 
 # Streamlit UI setup
-st.title("Automatic 4xx Redirects (V2-BigC-URL path)")
+st.title("4xx Redirects V2")
 
 # Sidebar for additional information
-st.sidebar.title("Automatic 4xx Redirects (V2-BigC-URL path)")
+st.sidebar.title("4xx Redirects V2 (BigC-URL path)")
 st.sidebar.info("""
 
 This script is designed to automate the process of suggesting redirects by matching old URLs (resulting in 4xx errors) with live URLs from an XML sitemap crawl based on the similarity of the URL paths and H1 tags.
