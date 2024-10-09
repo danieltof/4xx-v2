@@ -7,8 +7,8 @@ from io import BytesIO
 st.markdown(
     """
     <style>
-    .css-1d391kg {
-        background-color: #ADD8E6 !important;
+    [data-testid="stSidebar"] > div:first-child {
+        background-color: #ADD8E6;
     }
     </style>
     """,
