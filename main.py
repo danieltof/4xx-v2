@@ -76,10 +76,6 @@ The script compares the URL paths from Old.xlsx with the paths from New.xlsx, an
 4. Generating Redirect Suggestions
 5. Exporting Results to Excel (output.xlsx)
 
-**Requirements:**
-- Ensure you have the following dependencies installed:
-```bash
-!pip install rapidfuzz
 """)
 
 # Upload files
