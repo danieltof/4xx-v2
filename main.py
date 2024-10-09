@@ -57,7 +57,7 @@ def match_urls(old_data, new_data):
 st.title("URL Matching Web App")
 
 # Sidebar for additional information
-st.sidebar.title("Automatic 4xx Redirects (Version 2 - for BigCommerce to use the URL path)")
+st.sidebar.title("Automatic 4xx Redirects (V2-BigC-URL path)")
 st.sidebar.info("""
 
 This script is designed to automate the process of suggesting redirects by matching old URLs (resulting in 4xx errors) with live URLs from an XML sitemap crawl based on the similarity of the URL paths and H1 tags.
