@@ -7,17 +7,24 @@ from io import BytesIO
 st.markdown(
     """
     <style>
-    [data-testid="stSidebar"] > div:first-child {
+    [data-testid="stSidebar"] {
         background-color: #006ba1;
         color: white;
     }
     [data-testid="stSidebar"] .css-1d391kg, [data-testid="stSidebar"] .css-1d391kg * {
         color: white !important;
     }
+    [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3, 
+    [data-testid="stSidebar"] h4, [data-testid="stSidebar"] h5, [data-testid="stSidebar"] h6, 
+    [data-testid="stSidebar"] p, [data-testid="stSidebar"] a, [data-testid="stSidebar"] li, 
+    [data-testid="stSidebar"] span, [data-testid="stSidebar"] div, [data-testid="stSidebar"] label {
+        color: white !important;
+    }
     </style>
     """,
     unsafe_allow_html=True
 )
+
 
 # Function to extract the path from the URL (everything after the domain)
 def extract_path(url):
