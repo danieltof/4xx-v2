@@ -9,6 +9,10 @@ st.markdown(
     <style>
     [data-testid="stSidebar"] > div:first-child {
         background-color: #006ba1;
+        color: white;
+    }
+    [data-testid="stSidebar"] .css-1d391kg, [data-testid="stSidebar"] .css-1d391kg * {
+        color: white !important;
     }
     </style>
     """,
