@@ -56,6 +56,32 @@ def match_urls(old_data, new_data):
 # Streamlit UI setup
 st.title("URL Matching Web App")
 
+# Sidebar for additional information
+st.sidebar.title("Automating 4xx Redirect Suggestions using Python")
+st.sidebar.info("""
+
+This script is designed to automate the process of suggesting redirects by matching old URLs (resulting in 4xx errors) with live URLs from an XML sitemap crawl based on the similarity of the URL paths and H1 tags.
+
+**Files Used:**
+- **Old.xlsx**: This Excel file represents the list of old URLs that result in 4xx errors. It contains one column: URL.
+- **New.xlsx**: This Excel file represents the live URLs crawled from the XML sitemap, including the H1 tags for each URL. It contains two columns: URL and H1.
+
+**Purpose:**
+The script compares the URL paths from Old.xlsx with the paths from New.xlsx, and takes into account the similarity between the old path and the H1 tag from New.xlsx. It suggests the best matching live URL with a similarity score.
+
+**Steps:**
+1. Loading the Data (Old.xlsx, New.xlsx)
+2. Extracting URL paths
+3. Similarity Matching (Paths and H1)
+4. Generating Redirect Suggestions
+5. Exporting Results to Excel (output.xlsx)
+
+**Requirements:**
+- Ensure you have the following dependencies installed:
+```bash
+!pip install rapidfuzz
+""")
+
 # Upload files
 old_file = st.file_uploader("Upload Old.xlsx", type=["xlsx"])
 new_file = st.file_uploader("Upload New.xlsx", type=["xlsx"])
