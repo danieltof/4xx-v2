@@ -100,7 +100,7 @@ The script compares the URL paths from Old.xlsx with the paths from New.xlsx, an
 2. Extracting URL paths
 3. Similarity Matching (Paths and H1)
 4. Generating Redirect Suggestions
-5. Exporting Results to Excel (output.xlsx)
+5. Exporting Results to Excel (matched_urls.xlsx)
 
 """)
 
