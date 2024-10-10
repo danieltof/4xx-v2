@@ -35,7 +35,7 @@ def extract_path(url):
 def similarity(a, b):
     return fuzz.ratio(str(a).lower(), str(b).lower())
 
-# Function to perform matching and return results
+# Function to perform matching and return results, with progress bar updates
 def match_urls(old_data, new_data):
     # Apply path extraction
     old_data['Old_Path'] = old_data['URL'].apply(extract_path)
@@ -44,7 +44,10 @@ def match_urls(old_data, new_data):
     # Perform matching based on path similarity and H1 similarity
     matched_urls = []
 
-    for _, old_row in old_data.iterrows():
+    # Initialize the progress bar
+    progress_bar = st.progress(0)
+
+    for i, old_row in old_data.iterrows():
         old_path = old_row['Old_Path']
         full_old_url = old_row['URL']  # Keep the full old URL
 
@@ -74,6 +77,9 @@ def match_urls(old_data, new_data):
             'Similarity_Score': best_similarity
         })
 
+        # Update the progress bar with each iteration
+        progress_bar.progress((i + 1) / len(old_data))
+
     return pd.DataFrame(matched_urls)
 
 # Sidebar for additional information
@@ -85,7 +91,6 @@ st.title("4xx Redirects V2")
 # Sidebar for additional information
 st.sidebar.title("4xx Redirects V2 (BigC-URL path)")
 st.sidebar.info("""
-
 This script is designed to automate the process of suggesting redirects by matching old URLs (resulting in 4xx errors) with live URLs from an XML sitemap crawl based on the similarity of the URL paths and H1 tags.
 
 **Files Used:**
@@ -101,7 +106,6 @@ The script compares the URL paths from Old.xlsx with the paths from New.xlsx, an
 3. Similarity Matching (Paths and H1)
 4. Generating Redirect Suggestions
 5. Exporting Results to Excel (matched_urls.xlsx)
-
 """)
 
 # Set an initial flag for completion
@@ -112,37 +116,40 @@ old_file = st.file_uploader("Upload Old.xlsx", type=["xlsx"])
 new_file = st.file_uploader("Upload New.xlsx", type=["xlsx"])
 
 if old_file and new_file:
-    # Read uploaded Excel files
-    old_data = pd.read_excel(old_file)
-    new_data = pd.read_excel(new_file)
+    # Button to start the matching process
+    if st.button('Let It Go'):
+        # Read uploaded Excel files
+        old_data = pd.read_excel(old_file)
+        new_data = pd.read_excel(new_file)
 
-    # Rename columns to match the script
-    old_data.columns = ['URL']
-    new_data.columns = ['URL', 'H1']
+        # Rename columns to match the script
+        old_data.columns = ['URL']
+        new_data.columns = ['URL', 'H1']
 
-    # Perform matching
-    matched_df = match_urls(old_data, new_data)
+        # Perform matching
+        matched_df = match_urls(old_data, new_data)
 
-    # Display the matched results
-    st.write("Matched Results:")
-    st.dataframe(matched_df)
+        # Display the matched results
+        st.write("Matched Results:")
+        st.dataframe(matched_df)
 
-    # Provide download link for the output file
-    output = BytesIO()
-    with pd.ExcelWriter(output, engine='openpyxl') as writer:
-        matched_df.to_excel(writer, index=False)
+        # Provide download link for the output file
+        output = BytesIO()
+        with pd.ExcelWriter(output, engine='openpyxl') as writer:
+            matched_df.to_excel(writer, index=False)
 
-    output.seek(0)
-    st.download_button(
-        label="Download Matched Results as Excel",
-        data=output,
-        file_name="matched_urls.xlsx",
-        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    )
+        output.seek(0)
+        st.download_button(
+            label="Download Matched Results as Excel",
+            data=output,
+            file_name="matched_urls.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
 
-    # Set the flag to True once everything is done
-    execution_complete = True
+        # Set the flag to True once everything is done
+        execution_complete = True
 
 # Only show the success message if the execution is complete
 if execution_complete:
     st.success("Execution Completed")
+    st.balloons()  # Add balloons animation for successful completion
