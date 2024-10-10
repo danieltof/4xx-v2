@@ -117,7 +117,7 @@ new_file = st.file_uploader("Upload New.xlsx", type=["xlsx"])
 
 if old_file and new_file:
     # Button to start the matching process
-    if st.button('Let It Go'):
+    if st.button("Let's Go"):
         # Read uploaded Excel files
         old_data = pd.read_excel(old_file)
         new_data = pd.read_excel(new_file)
