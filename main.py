@@ -151,5 +151,5 @@ if old_file and new_file:
 
 # Only show the success message if the execution is complete
 if execution_complete:
-    st.success("Execution Completed")
+    st.success("Processing Complete! Your data is ready to download.")
     st.balloons()  # Add balloons animation for successful completion
